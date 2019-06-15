@@ -13,7 +13,9 @@ public class Account {
 	double banlance;
 	
 	public synchronized void set(String name, double banlance) {
+		System.out.println("start");
 		this.name = name;
+		System.out.println("end");
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
@@ -21,21 +23,21 @@ public class Account {
 		}
 		this.banlance = banlance;
 	}
-	public String getName() {
+	public synchronized String getName() {
 		return name;
 	}
-	public /*synchronized*/ double getBanlance() {
-		return this.banlance;
+	public synchronized double getBanlance() {
+		return banlance;
 	}
 	public static void main(String[] args) {
 		Account a = new Account();
-		new Thread(()->a.set("xumengjin", 100.0)).start();
-		System.out.println(a.getName());
-		System.out.println(a.getBanlance());
+		new Thread(()->a.set("xumengjin", 100.0)).start();// 第二个拿到锁
+		
+		System.out.println("name:" + a.getName()); // 第一个拿到锁
+		System.out.println(a.getBanlance());// 第三个拿到锁
 		try {
 			TimeUnit.SECONDS.sleep(3);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println(a.getName());
