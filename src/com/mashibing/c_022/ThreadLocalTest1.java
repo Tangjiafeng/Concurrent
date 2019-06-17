@@ -7,7 +7,6 @@ public class ThreadLocalTest1 {
 	static ThreadLocal<Person> tlp = new ThreadLocal<Person>();
 	
 	public static void main(String[] args) {
-		ThreadLocalTest1 tl = new ThreadLocalTest1();
 		
 		new Thread(() -> {			
 			try {
