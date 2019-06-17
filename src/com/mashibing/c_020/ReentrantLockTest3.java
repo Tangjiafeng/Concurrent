@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ReentrantLockTest3 extends Thread {
-	static Lock lock = new ReentrantLock(true);
+	static Lock lock = new ReentrantLock(true);// 公平锁，谁等待的时间长，首先让谁锁定
 
 	@Override
 	public void run() {
