@@ -1,0 +1,44 @@
+Map:
+    非线程安全：
+    HashMap（Collections.synchronized...() 之后，Time cost: 23976），哈希表实现，支持 null 值和 null 键。可以利用 Collections.synchronized...()（“synchronizedMap()”） 
+    返回同步容器实现同步。
+    
+    LinkedHashMap，是 HashMap 的一个子类，保存了记录的插入顺序。
+    
+    TreeMap（Collections.synchronized...() 之后，Time cost: 45023），树结构实现 SortMap 接口 ，保存的记录根据键排序，默认是键值的升序排序，有序下对插入的效率有所影响
+    
+    
+    线程安全：
+    Hashtable（锁 ；Time cost: 24179），最老的一种，锁定整个对象，所有方法都加锁，效率低，不支持 null 值和 null 键。
+    
+    ConcurrentHashMap（锁 + 高并发；Time cost: 18607），ConcurrentHashMap 比 Hashtable 效率高，原因在于前者的锁更加细化，前者将对象
+    分成十六部分，即十六段，每次仅对其中的一段上锁，而不是像后者一样对整个对象上锁；并发程序中，多线程如果操作的是 ConcurrentHashMap
+    不同的段，则可以并发执行，互不影响。
+    
+    ConcurrentSkipListMap（锁 + 高并发 + 有序；Time cost: 17409），
+
+
+Set:
+    单列
+    
+    
+Queue:
+    ConcurrentLinkedQueue，无界队列，提供线程安全原子性的操作，内部加锁。
+    
+    Interface BlockingQueue：
+      ArrayBlockingQueue，有界阻塞式（wait）容器，可以在构造函数中指定大小，添加元素时如果满了，就会等待，取元素时如果空了就会等待。    
+      LinkedBlockingQueue，无界阻塞式容器，添加元素时如果满了，就会等待，取元素时如果空了就会等待。    
+    
+      Sub Interface TransferQueue：
+        LinkedTransferQueue，transfer() 方法，直接将生产者的消息转发给消费者，不用存在队列里，默认时消费者先启动，没有消费者则该方法
+      会阻塞，效率会更高。
+      
+    DelayQueue，无界延迟容器，根据容器中实现 Delayed 接口的类的“实例”元素，由停留的时间长短决定弹出容器的元素。
+    
+    SynchronousQueue，特殊的 TransferQueue ，容器为零，消息必须实时处理。
+      
+    
+List：
+    Vector，线程安全
+    CopyOnWriteArrayList，线程安全，写效率低，但并发读效率很高，因为写时复制，新写入元素，则复制一份容器并加入新元素，将引用指向新的容器对象，
+    读操作不需要加锁，因为不受修改影响。
