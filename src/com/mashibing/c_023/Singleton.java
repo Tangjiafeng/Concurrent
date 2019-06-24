@@ -1,5 +1,10 @@
 package com.mashibing.c_023;
 
+/**
+ * 线程安全的单例模式
+ * @author A
+ *
+ */
 public class Singleton {
 
 	public static Singleton getSingle() {
