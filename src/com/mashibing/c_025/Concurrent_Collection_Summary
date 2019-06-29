@@ -32,7 +32,7 @@ Queue（Deque，双端队列）:
       Sub Interface TransferQueue：
         LinkedTransferQueue，transfer() 方法，直接将生产者的消息转发给消费者，不用存在队列里，默认时消费者先启动，没有消费者则该方法
       会阻塞，效率会更高。
-      SynchronousQueue，特殊的 TransferQueue ，容器为零，消息必须实时处理。
+      SynchronousQueue，特殊的 TransferQueue ，容器为零，任务必须实时交给线程处理。
       	
       DelayQueue，无界延迟容器，根据容器中实现 Delayed 接口的类的“实例”元素，由停留的时间长短决定弹出容器的元素。
     

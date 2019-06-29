@@ -1,0 +1,11 @@
+线程池的种类及区别：
+1，newFixedThreadPool()，返回固定线程数目的线程池。
+
+2，newCachedThreadPool()，根据任务动态的创建线程，回收空闲超过一定时间的线程。
+
+3，newSingleThreadExecutor()，只有一个线程的线程池，可通过该机制规定任务执行的顺序。
+
+4，newScheduledThreadPool()，可设定执行计划的线程池。任务执行初始化延迟时长，执行间隔，注意返回
+值是 ScheduledExecutorService
+
+5，
