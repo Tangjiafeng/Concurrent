@@ -17,9 +17,9 @@ public class T_03_ParallelComputing {
 		List<Integer> res = getPrime(1, 200000);
 		System.out.println(res.size());
 		long end = System.currentTimeMillis();
-		TimeUtil.timeCost(start, end);		
+		TimeUtil.timeCost(start, end);
 		// 发挥多核的优势，一般线程池的大小设置为 CPU 核数的倍数。
-		ExecutorService service = Executors.newFixedThreadPool(2);
+		ExecutorService service = Executors.newFixedThreadPool(4);
 		start = System.currentTimeMillis();
 		Future<List<Integer>> future1 = service.submit(new MyTask(1, 150000));
 		Future<List<Integer>> future2 = service.submit(new MyTask(150000, 200000));		
