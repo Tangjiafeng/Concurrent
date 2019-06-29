@@ -21,7 +21,7 @@ public class T_01_ThreadPool {
 			});
 		}
 		
-		System.out.println(service);		
+		System.out.println(service);
 		// 正常关闭，会等待任务执行结束
 		service.shutdown();
 		/*
