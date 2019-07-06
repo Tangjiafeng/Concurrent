@@ -6,6 +6,7 @@
 3，newSingleThreadExecutor()，只有一个线程的线程池，可通过该机制规定任务执行的顺序。
 
 4，newScheduledThreadPool()，可设定执行计划的线程池。任务执行初始化延迟时长，执行间隔，注意返回
-值是 ScheduledExecutorService
+值是 ScheduledExecutorService。
 
-5，
+5，newWorkStealingPool()，一般会根据系统 CPU 的核数确定执行任务时创建线程的个数，首先执行完任务的线程会从别的线程任务队列“抢夺”任务来执行。
+基于 ForkJoin 机制。
