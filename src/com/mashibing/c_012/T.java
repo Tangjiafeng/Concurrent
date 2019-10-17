@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  *
  */
 public class T {
-	/*volatile*/ boolean running = true;
+	volatile boolean running = true;
 	
 	void m() {
 		System.out.println("m start.");

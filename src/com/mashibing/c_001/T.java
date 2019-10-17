@@ -12,8 +12,8 @@ public class T implements Runnable {
 	}
 
 	@Override
-	public synchronized void run() {// synchronized 标记的方法体的执行是原子性的，不可分
-		this.count --;
+	public synchronized void run() {// synchronized 标记的方法体的执行是原子性的，不可分，保证count值
+		this.count --;              // 在并发环境下的正确性。
 		System.out.println(Thread.currentThread().getName() + " count = " + this.count);
 	}
 

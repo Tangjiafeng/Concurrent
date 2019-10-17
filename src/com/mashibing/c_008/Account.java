@@ -43,5 +43,4 @@ public class Account {
 		System.out.println(a.getName());
 		System.out.println(a.getBanlance());
 	}
-
 }
